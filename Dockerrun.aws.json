@@ -5,21 +5,30 @@
 			"image": "susannit/multi-client",
 			"hostname": "client",
 			"essential": false,
-			"memory": 128
+			"memory": 128,
+			"command" : [
+			       "/bin/bash"
+			      ]
 		},
 		{
 			"name": "server",
 			"image": "susannit/multi-server",
 			"hostname": "api",
 			"essential": false,
-			"memory": 128
+			"memory": 128,
+			"command" : [
+			       "/bin/bash"
+			      ]
 		},
 		{
 			"name": "worker",
 			"image": "susannit/multi-worker",
 			"hostname": "worker",
 			"essential": false,
-			"memory": 128
+			"memory": 128,
+			"command" : [
+			       "/bin/bash"
+			      ]
 		},
 		{
 			"name": "nginx",
@@ -31,7 +40,10 @@
 				"containerPort": 80
 			}],
 			"links": ["client", "server"],
-			"memory": 128
+			"memory": 128,
+			"command" : [
+			       "/bin/bash"
+			      ]
 		}
 	]
 }
