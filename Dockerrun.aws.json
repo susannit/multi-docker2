@@ -15,7 +15,6 @@
 			"image": "susannit/multi-server",
 			"hostname": "api",
 			"essential": false,
-			"memory": 128,
 			"command" : [
 			       "/bin/bash"
 			      ]
