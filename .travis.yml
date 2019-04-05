@@ -1,26 +1,25 @@
-
 sudo: required
 service: 
- - docker
+  - docker
 before_install:
- - docker build -t susannit/react-test -f ./client/Dockerfile.dev ./client
+   - docker build -t susannit/react-test -f ./client/Dockerfile.dev ./client
 
 
 script:
- - docker run susannit/react-test npm test -- --coverage
+   - docker run susannit/react-test npm test -- --coverage
 
 after_success:
- - docker build -t susannit/multi-client ./client
- - docker build -t susannit/multi-nginx ./nginx
- - docker build -t susannit/multi-server ./server
- - docker build -t susannit/multi-worker ./worker
- # Log in to the docker CLI
- - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
- 
- - docker push susannit/multi-client
- - docker push susannit/multi-nginx
- - docker push susannit/multi-server
- - docker push susannit/multi-worker
+   - docker build -t susannit/multi-client ./client
+   - docker build -t susannit/multi-nginx ./nginx
+   - docker build -t susannit/multi-server ./server
+   - docker build -t susannit/multi-worker ./worker
+   # Log in to the docker CLI
+   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+   
+   - docker push susannit/multi-client
+   - docker push susannit/multi-nginx
+   - docker push susannit/multi-server
+   - docker push susannit/multi-worker
  
 deploy:
   provider: elasticbeanstalk
